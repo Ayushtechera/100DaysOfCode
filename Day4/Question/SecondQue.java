@@ -1,0 +1,32 @@
+package Question;
+
+import java.util.Scanner;
+
+public class SecondQue {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        int n = in.nextInt();
+        System.out.println(isArmstrong(n));
+
+        //Printing all 3 digit Armstrong numbers between 100 to 1000
+        for(int i = 100; i<1000;i++){
+            if (isArmstrong(i)) {
+                System.out.print(i + " ");
+            }
+            // System.out.println(isArmstrong(i));
+        }
+
+    }
+    static boolean isArmstrong(int n){
+        int original = n;
+        int sum = 0;
+        while (n > 0) {
+            int rem = n%10;
+            int cube = rem*rem*rem;
+            sum += cube;
+            n = n/10;
+        }
+        return(sum == original);
+    }
+}
