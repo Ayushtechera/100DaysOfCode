@@ -8,7 +8,40 @@ public class RotatedBinarySearch {
     public int search(int[] nums, int target) {
         int pivot = FindPivot(nums);
 
-        // if you do not find pivot 
+        
+        // if you do not find pivot,it means array is not rotated
+        if(pivot == -1){
+            // Perform simple binary search 
+            return binarySearch(nums ,target, 0 , nums.length-1);
+        }
+        // if pivot is found, we have 2 ascending order arrays
+
+        // And there's going to be 3 cases are as follows:-
+        //CASE-1
+        if(nums[pivot] == target){
+            return pivot;
+        }
+        //CASE-2
+        if(target >= nums[0]){
+            return binarySearch(nums, target, 0, pivot - 1);
+        }
+        return binarySearch(nums, target,pivot-1, nums.length-1);
+    }
+
+     public static int binarySearch(int[] arr , int target, int start, int end){
+        while(start <= end){
+            int mid = start + (end - start)/2;
+
+            if(target > arr[mid]){
+                start = mid + 1;
+            }else if(target < arr[mid]){
+                end = mid - 1;
+            }else {
+                return mid;
+            }
+               
+        }
+        return -1;
     }
 
     public static int FindPivot(int[] arr){
