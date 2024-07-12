@@ -2,7 +2,7 @@ public class FibonacciByRecursion {
     public static void main(String[] args) {
         // int ans = fibo(4);
         // System.out.println(ans);
-        System.out.println(fibo(4));
+        System.out.println(fibo(50));
         
     }
 
